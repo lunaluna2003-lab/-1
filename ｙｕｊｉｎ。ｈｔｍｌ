@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube 스타일 실험 페이지</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f9f9f9;
+      margin: 0;
+    }
+
+    header {
+      background: white;
+      padding: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      padding: 20px;
+    }
+
+    .video {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .video:hover {
+      transform: scale(1.03);
+    }
+
+    .thumbnail {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .title {
+      padding: 10px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .info {
+      padding: 0 10px 10px;
+      font-size: 12px;
+      color: gray;
+    }
+
+    .result {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      background: black;
+      color: white;
+      padding: 10px;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>📺 YouTube 실험 페이지</header>
+
+<div class="container">
+
+  <!-- 실제 이미지 -->
+  <div class="video" onclick="countClick('real')">
+    <img src="real.jpg" class="thumbnail">
+    <div class="title">하루 3시간 공부로 성적 올린 방법</div>
+    <div class="info">조회수 1.2만회 · 2일 전</div>
+  </div>
+
+  <!-- AI 자연 -->
+  <div class="video" onclick="countClick('ai_natural')">
+    <img src="ai_natural.jpg" class="thumbnail">
+    <div class="title">하루 3시간 공부로 성적 올린 방법</div>
+    <div class="info">조회수 1.2만회 · 2일 전</div>
+  </div>
+
+  <!-- AI 과장 -->
+  <div class="video" onclick="countClick('ai_exaggerated')">
+    <img src="ai_exaggerated.jpg" class="thumbnail">
+    <div class="title">하루 3시간 공부로 성적 올린 방법</div>
+    <div class="info">조회수 1.2만회 · 2일 전</div>
+  </div>
+
+</div>
+
+<div class="result" id="result">
+  클릭 수<br>
+  실제: 0<br>
+  AI 자연: 0<br>
+  AI 과장: 0
+</div>
+
+<script>
+let clicks = {
+  real: 0,
+  ai_natural: 0,
+  ai_exaggerated: 0
+};
+
+function countClick(type) {
+  clicks[type]++;
+  document.getElementById("result").innerHTML =
+    `클릭 수<br>
+    실제: ${clicks.real}<br>
+    AI 자연: ${clicks.ai_natural}<br>
+    AI 과장: ${clicks.ai_exaggerated}`;
+}
+</script>
+
+</body>
+</html>
