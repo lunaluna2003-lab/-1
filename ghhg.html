@@ -1,0 +1,20 @@
+import OpenAI from "openai";
+import fs from "fs";
+
+const openai = new OpenAI();
+
+const prompt = `close-up mukbang thumbnail, creamy cheesy noodles being lifted with chopsticks, extremely stretchy cheese, white bowl full of creamy tteokbokki, soft warm lighting, shallow depth of field, blurred background, Korean mukbang style, highly detailed food texture, appetizing, ASMR style, 4k
+
+add bold Korean text on the left side: "전재산 5만원 남은 지금 마지막 배떡", thick font, high contrast, black background box, yellow and white text
+
+include cute pink cartoon mascot character on the top left, simple and adorable style
+
+composition like YouTube thumbnail, high contrast, eye-catching, vibrant`;
+
+const result = await openai.images.generate({
+  model: "gpt-image-1",
+  prompt: prompt,
+  size: "1024x1024"
+});
+
+fs.writeFileSync("thumbnail.png", result.data[0].b64_json, "base64");
